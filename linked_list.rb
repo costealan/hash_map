@@ -146,6 +146,16 @@ class LinkedList
     result
   end
 
+  def entries
+    current = @head
+    result = Array.new()
+    while current != nil
+      result.push(current.key, current.value)
+      current = current.next
+    end
+    result
+  end
+
   def remove_at(index)
     current = @head
     if index == 0 && current.next != nil
@@ -175,6 +185,7 @@ class LinkedList
     end
     find_last(node.next)
   end
+
 end
 
 class Node
