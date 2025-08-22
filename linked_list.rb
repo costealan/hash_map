@@ -125,6 +125,16 @@ class LinkedList
       new_node.next = old
   end
 
+  def keys
+    current = @head
+    result = Array.new()
+    while current != nil
+      result.push(current.key)
+      current = current.next
+    end
+    result
+  end
+
   def remove_at(index)
     current = @head
     if index == 0 && current.next != nil
