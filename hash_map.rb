@@ -17,17 +17,17 @@ class HashMap
 
   def set(key, value)
     index = hash(key)
-    bucket = @capacity[index]
-    raise IndexError if index.negative? || index >= @buckets.length
-    if bucket == nil
+      raise IndexError if index.negative? || index >= @capacity.length
+
+    if @capacity[index] == nil
       list = LinkedList.new
       list.append(key, value)
-      bucket = list
+      @capacity[index] = list
     else 
-      if bucket.contains?(key)
-        bucket.find(key).value = value
+      if @capacity[index].contains?(key)
+        @capacity[index].find(key).value = value
       else
-        bucket.append(key, value)
+        @capacity[index].append(key, value)
       end
     end
   end
