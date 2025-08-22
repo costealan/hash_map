@@ -17,7 +17,11 @@ class HashMap
 
   def set(key, value)
     hash_code = hash(key)
-    @capacity[hash_code] = value
+    if @capacity[hash_code] == nil
+      list = LinkedList.new
+      list.append(key, value)
+      @capacity[hash_code] = list
+    end
   end
   
 end
