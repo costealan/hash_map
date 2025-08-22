@@ -144,7 +144,7 @@ class LinkedList
 end
 
 class Node
-  attr_accessor :value, :next
+  attr_accessor :key, :value, :next
   def initialize(key, value, next_node)
     @key = key
     @value = value
