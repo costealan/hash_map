@@ -25,7 +25,7 @@ class HashMap
       @capacity[index] = list
     else 
       if @capacity[index].contains?(key)
-        @capacity[index].find(key).value = value
+        @capacity[index].find_node(key).value = value
       else
         @capacity[index].append(key, value)
       end
@@ -35,7 +35,7 @@ class HashMap
   def get(key)
     index = hash(key)
     if @capacity[index].contains?(key)
-      @capacity[index].find(key) 
+      @capacity[index].find_node(key) 
     else
       nil
     end
@@ -48,11 +48,19 @@ class HashMap
     end
     @capacity[index].contains?(key)
   end
+
+  def remove(key)
+    index = hash(key)
+    if !@capacity[index].contains?(key)
+      return nil
+    end
+   @capacity[index].remove_at(@capacity[index].find_index(key))
+  end
 end
 
 hash_map = HashMap.new(0.75)
 hash_map.set('Alan', 'Costa')
 hash_map.set('Alan', 'Coste')
 hash_map.set('Coffee', 'Nespresso')
-p 'has? Alan', hash_map.has?('Alan')
-p 'has? Coffee', hash_map.has?('Ceeffo')
+hash_map.remove('Coffee')
+p hash_map.capacity
