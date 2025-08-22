@@ -63,8 +63,13 @@ class HashMap
   end
 
   def length
-    #loops through buckets
-    # for each different key in the bucket
+    result = 0
+    @capacity.each do |bucket|
+      if bucket != nil
+        result += bucket.size
+      end
+    end
+    result
   end
 end
 
@@ -87,4 +92,4 @@ end
  test.set('frog', 'verde')
  test.set('elephant', 'gris')
 
- p test.capacity
+p test.length
