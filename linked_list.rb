@@ -150,18 +150,3 @@ class Node
     @next = next_node
   end
 end
-
-
-
-list = LinkedList.new
-
-list.append('dog')
-# list.append('cat')
-# list.append('parrot')
-# list.append('hamster')
-# list.append('snake')
-# list.append('turtle')
-# list.insert_at('orca', 3)
-# list.insert_at('dolphin', 3)
-list.remove_at(0)
-puts list
