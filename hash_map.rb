@@ -16,11 +16,18 @@ class HashMap
   end
 
   def set(key, value)
-    hash_code = hash(key)
-    if @capacity[hash_code] == nil
+    index = hash(key)
+    bucket = @capacity[index]
+    if bucket == nil
       list = LinkedList.new
       list.append(key, value)
-      @capacity[hash_code] = list
+      bucket = list
+    else 
+      if bucket.contains?(key)
+        bucket.find(key).value = value
+      else
+        bucket.append(key, value)
+      end
     end
   end
   
@@ -28,4 +35,5 @@ end
 
 hash_map = HashMap.new(0.75)
 hash_map.set('Alan', 'Coste')
+hash_map.set('Alan', 'Costa')
 p hash_map.capacity
