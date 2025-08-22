@@ -55,10 +55,10 @@ class LinkedList
     last_node
   end
 
-  def contains?(value)
+  def contains?(key)
     current = @head
     until current == nil
-      if current.value == value
+      if current.key == key
         return true
       else
         current = current.next
