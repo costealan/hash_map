@@ -1,7 +1,8 @@
 class HashMap
-  def initialize
-    @load_factor = nil
-    @capacity = nil
+  attr_accessor :capacity
+  def initialize(load_factor)
+    @load_factor = load_factor
+    @capacity = Array.new(16)
   end
 
   def hash(key)
@@ -13,3 +14,5 @@ class HashMap
    hash_code
   end
 end
+
+hash_map = HashMap.new(0.75)
