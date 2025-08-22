@@ -3,8 +3,8 @@ class LinkedList
     @head = nil
   end
 
-  def append(value)
-    node = Node.new(value, nil)
+  def append(key, value)
+    node = Node.new(key, value, nil)
     if head == nil
       @head = node
     else
@@ -13,9 +13,9 @@ class LinkedList
     end  
   end
 
-  def prepend(value)
+  def prepend(key, value)
     old_head = @head
-    @head = Node.new(value, old_head)
+    @head = Node.new(key, value, old_head)
   end
 
   def size
@@ -90,11 +90,11 @@ class LinkedList
     string << "nil"
   end
 
-  def insert_at(value, index)
+  def insert_at(key, value, index)
     if index == 0
       prepend(value)
     end
-      new_node = Node.new(value, nil)
+      new_node = Node.new(key, value, nil)
       previous = nil
       old = nil
       current = @head
