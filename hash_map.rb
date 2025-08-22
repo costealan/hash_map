@@ -1,3 +1,4 @@
+require_relative 'linked_list'
 class HashMap
   attr_accessor :capacity
   def initialize(load_factor)
