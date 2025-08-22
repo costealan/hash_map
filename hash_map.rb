@@ -18,6 +18,7 @@ class HashMap
   def set(key, value)
     index = hash(key)
     bucket = @capacity[index]
+    raise IndexError if index.negative? || index >= @buckets.length
     if bucket == nil
       list = LinkedList.new
       list.append(key, value)
