@@ -67,12 +67,25 @@ class LinkedList
     false
   end
 
-  def find(key)
+  def find_node(key)
     i = 0
     current = @head
     until current == nil
       if current.key == key
         return current
+      end
+      i += 1
+      current = current.next
+    end
+    nil
+  end
+  
+  def find_index(key)
+    i = 0
+    current = @head
+    until current == nil
+      if current.key == key
+        return i
       end
       i += 1
       current = current.next
