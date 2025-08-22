@@ -32,9 +32,18 @@ class HashMap
     end
   end
   
+  def get(key)
+    index = hash(key)
+    if @capacity[index].contains?(key)
+      @capacity[index].find(key) 
+    else
+      nil
+    end
+  end
+
 end
 
 hash_map = HashMap.new(0.75)
-hash_map.set('Alan', 'Coste')
 hash_map.set('Alan', 'Costa')
-p hash_map.capacity
+hash_map.set('Alan', 'Coste')
+p hash_map.get('Alan')
