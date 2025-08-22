@@ -67,12 +67,12 @@ class LinkedList
     false
   end
 
-  def find(value)
+  def find(key)
     i = 0
     current = @head
     until current == nil
-      if current.value == value
-        return i
+      if current.key == key
+        return current
       end
       i += 1
       current = current.next
