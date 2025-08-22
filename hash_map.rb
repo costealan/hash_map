@@ -41,9 +41,18 @@ class HashMap
     end
   end
 
+  def has?(key)
+    index = hash(key)
+    if @capacity[index] == nil
+      return false
+    end
+    @capacity[index].contains?(key)
+  end
 end
 
 hash_map = HashMap.new(0.75)
 hash_map.set('Alan', 'Costa')
 hash_map.set('Alan', 'Coste')
-p hash_map.get('Alan')
+hash_map.set('Coffee', 'Nespresso')
+p 'has? Alan', hash_map.has?('Alan')
+p 'has? Coffee', hash_map.has?('Ceeffo')
