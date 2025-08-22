@@ -135,6 +135,17 @@ class LinkedList
     result
   end
 
+
+  def values
+    current = @head
+    result = Array.new()
+    while current != nil
+      result.push(current.value)
+      current = current.next
+    end
+    result
+  end
+
   def remove_at(index)
     current = @head
     if index == 0 && current.next != nil

@@ -85,6 +85,16 @@ class HashMap
     end
     result.flatten
   end
+
+  def values
+      result = Array.new
+    @capacity.each do |bucket|
+     if bucket != nil
+       result.push(bucket.values)
+     end
+    end
+    result.flatten
+  end
 end
 
  test = HashMap.new
@@ -106,4 +116,4 @@ end
  test.set('frog', 'verde')
  test.set('elephant', 'gris')
 
-p test.keys
+p test.values
