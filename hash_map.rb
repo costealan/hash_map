@@ -71,6 +71,10 @@ class HashMap
     end
     result
   end
+
+  def clear
+    @capacity = Array.new(16)
+  end
 end
 
  test = HashMap.new
@@ -92,4 +96,5 @@ end
  test.set('frog', 'verde')
  test.set('elephant', 'gris')
 
-p test.length
+test.clear
+p test.capacity
