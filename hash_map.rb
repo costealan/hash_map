@@ -23,13 +23,13 @@ class HashMap
       list = LinkedList.new
       list.append(key, value)
       @capacity[index] = list
-      increment_load
+      handle_capacity
     else 
       if @capacity[index].contains?(key)
         @capacity[index].find_node(key).value = value
       else
         @capacity[index].append(key, value)
-        increment_load
+        handle_capacity
       end
     end
   end
@@ -113,7 +113,14 @@ class HashMap
     @load_factor = (length * 100) / @capacity.length
   end
 
-  
+  def full_capacity?
+    load_factor > 75
+  end
+
+  def handle_capacity
+    increment_load
+    full_capacity?
+  end
 
 end
 
