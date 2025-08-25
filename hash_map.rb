@@ -116,10 +116,20 @@ class HashMap
   def full_capacity?
     load_factor > 75
   end
+  
+  def double_capacity
+    expanded_capacity = Array.new(@capacity.length * 2)
+    i = 0
+    while i <= @capacity.length
+      expanded_capacity[i] = @capacity[i]
+      i += 1
+    end
+    @capacity = expanded_capacity
+  end
 
   def handle_capacity
     increment_load
-    full_capacity?
+    double_capacity if full_capacity?
   end
 
 end
@@ -138,9 +148,9 @@ end
  test.set('jacket', 'blue')
  test.set('kite', 'pink')
  test.set('lion', 'golden')
-
  test.set('lion', 'dorado')
  test.set('frog', 'verde')
  test.set('elephant', 'gris')
+ test.set('guitar', 'white')
 
-p test.load_factor
+p test.capacity
