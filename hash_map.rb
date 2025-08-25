@@ -1,8 +1,8 @@
 require_relative 'linked_list'
 class HashMap
-  attr_accessor :capacity
+  attr_accessor :capacity, :load_factor
   def initialize
-    @load_factor = 0.75
+    @load_factor = 0
     @capacity = Array.new(16)
   end
 
@@ -23,11 +23,13 @@ class HashMap
       list = LinkedList.new
       list.append(key, value)
       @capacity[index] = list
+      increment_load
     else 
       if @capacity[index].contains?(key)
         @capacity[index].find_node(key).value = value
       else
         @capacity[index].append(key, value)
+        increment_load
       end
     end
   end
@@ -106,6 +108,13 @@ class HashMap
     result
   end
   
+
+  def increment_load
+    @load_factor = (length * 100) / @capacity.length
+  end
+
+  
+
 end
 
  test = HashMap.new
@@ -127,4 +136,4 @@ end
  test.set('frog', 'verde')
  test.set('elephant', 'gris')
 
-p test.entries
+p test.load_factor
